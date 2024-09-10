@@ -16,4 +16,9 @@ public class Alex extends Lion{
         return "Нью-Йоркский зоопарк";
     }
 
+    @Override
+    public int getKittens(){
+        return 0;
+    }
+
 }

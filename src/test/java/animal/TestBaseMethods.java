@@ -1,4 +1,4 @@
-package Animal;
+package animal;
 
 import com.example.Animal;
 import constants.Constants;

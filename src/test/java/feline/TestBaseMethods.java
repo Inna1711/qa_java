@@ -1,4 +1,4 @@
-package Feline;
+package feline;
 
 import com.example.Feline;
 import constants.Constants;

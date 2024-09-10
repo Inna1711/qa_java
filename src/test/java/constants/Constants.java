@@ -13,6 +13,7 @@ public class Constants {
 
     public static final List<String> ALEX_FRIENDS = List.of("Марти", "Глория", "Мелман");
 
+    public static final int ALEX_KITTENS_COUNT = 0;
     public static final String ALEX_PLACE_OF_LIVING = "Нью-Йоркский зоопарк";
 
     public static final int DEFAULT_KITTENS_COUNT = 1;

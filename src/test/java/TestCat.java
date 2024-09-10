@@ -7,6 +7,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class TestCat {
@@ -19,18 +21,17 @@ public class TestCat {
     }
 
     @Test
-    public void TestGetFood(){
+    public void testGetFood() throws Exception{
+        List<String> testFood = List.of("Мясо", "Рыба");
+        Mockito.when(feline.eatMeat()).thenReturn(testFood);
         Cat cat = new Cat(feline);
-        try {
-            cat.getFood();
-            Mockito.verify(feline).eatMeat();
-        } catch (Exception e){
-            fail("Exception was raised but it shouldn't");
-        }
+        List<String> catFood = cat.getFood();
+        Mockito.verify(feline).eatMeat();
+        assertArrayEquals("Food is not correct!", testFood.toArray(), catFood.toArray());
     }
 
     @Test
-    public void TestGetSound(){
+    public void testGetSound(){
         Cat cat = new Cat(feline);
         String sound = cat.getSound();
         assertEquals("Sound is not correct", Constants.CAT_SOUND, sound);

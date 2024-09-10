@@ -1,3 +1,5 @@
+package lion;
+
 import com.example.Feline;
 import com.example.Lion;
 import constants.Constants;
@@ -6,13 +8,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class TestLion {
+public class TestParamsMethods {
     @Mock
     Feline feline;
 
@@ -24,7 +25,7 @@ public class TestLion {
         MockitoAnnotations.initMocks(this);
     }
 
-    public TestLion(String sex, Boolean isFailure){
+    public TestParamsMethods(String sex, Boolean isFailure){
         this.sex = sex;
         this.isFailure = isFailure;
     }
@@ -55,7 +56,7 @@ public class TestLion {
     }
 
     @Test
-    public void TestConstructor(){
+    public void testConstructor(){
         try {
             new Lion(sex, feline);
         } catch (Exception e){
@@ -69,42 +70,12 @@ public class TestLion {
     }
 
     @Test
-    public void TestGetKittens(){
-        if (!isFailure){
-            Lion lion = GetLion();
-            if (lion != null){
-                lion.getKittens();
-                Mockito.verify(feline).getKittens();
-            }else {
-                fail("In this case lion should be created");
-            }
-        }
-    }
-    @Test
-    public void TestHasMane(){
+    public void testHasMane(){
         if (!isFailure){
             Lion lion = GetLion();
             if (lion != null){
                 var result = lion.doesHaveMane();
                 assertEquals("Wrong mane attribute", sex.equals(Constants.MALE), result);
-            }
-            else {
-                fail("In this case lion should be created");
-            }
-        }
-    }
-
-    @Test
-    public void TestGetFood(){
-        if (!isFailure){
-            Lion lion = GetLion();
-            if (lion != null){
-                try {
-                    lion.getFood();
-                    Mockito.verify(feline).getFood(Constants.PREDATOR);
-                } catch (Exception e){
-                    fail("There shouldn't be an exception of animal type");
-                }
             }
             else {
                 fail("In this case lion should be created");
